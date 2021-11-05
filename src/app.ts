@@ -1,13 +1,15 @@
 import express from 'express';
 import { Twilio } from "twilio";
-
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const twilioNumber = process.env.TWILIO_PHONE_NUMBER;
-const myNumber = process.env.MY_NUMBER;
+import * as dotenv from 'dotenv';
 
 const app = express();
 const port = 3000;
+dotenv.config();
+
+const accountSid:string = process.env.TWILIO_ACCOUNT_SID;
+const authToken:string = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber:string = process.env.TWILIO_PHONE_NUMBER;
+const myNumber:string = process.env.MY_NUMBER;
 
 if (accountSid && authToken && myNumber && twilioNumber) {
 const client = new Twilio(accountSid, authToken);
